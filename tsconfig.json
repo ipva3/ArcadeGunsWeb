@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictPropertyInitialization": true,
+
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    "stripInternal": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+
+    "sourceMap": true,
+    "inlineSources": true,
+    "importHelpers": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [".declarations", "src"],
+  "exclude": ["node_modules", "dist"]
+}
