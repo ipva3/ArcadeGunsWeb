@@ -31,6 +31,8 @@ export default defineConfig([
       ...ts.configs['stylistic-type-checked'].rules,
 
       // Additional strict rules
+      'no-debugger': 'off',
+      'no-unused-vars': 'off',
       'no-implicit-coercion': 'error',
       'no-extra-boolean-cast': 'error',
 
@@ -60,6 +62,16 @@ export default defineConfig([
       '@typescript-eslint/strict-boolean-expressions': 'error',
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'after-used',
+          ignoreRestSiblings: true,
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   {
