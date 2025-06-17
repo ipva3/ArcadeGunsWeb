@@ -7,8 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     mode,
     root: './src',
-    publicDir: './public',
-    assetsInclude: './public',
+    assetsInclude: '**/*.glsl',
     plugins: [tsconfigPaths()],
     esbuild: {
       drop: isDebug ? [] : ['debugger', 'console'],

@@ -40,6 +40,13 @@ export default defineConfig([
         'error',
         {
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          pathGroups: [
+            {
+              pattern: '@/**',
+              group: 'internal',
+              position: 'after',
+            },
+          ],
           'newlines-between': 'always',
           alphabetize: { order: 'asc' },
         },
@@ -47,11 +54,12 @@ export default defineConfig([
 
       // TypeScript strict rules
       '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/no-unnecessary-condition': 'error',
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/strict-boolean-expressions': 'error',
       '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   {
