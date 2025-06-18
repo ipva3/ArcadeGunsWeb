@@ -1,25 +1,29 @@
 import type { IRunnable } from '@/shared/interfaces';
 import type { DeltaTime } from '@/shared/types';
 
-import { GuiLayer, Layer, WorldLayer } from './layer';
+import { EventEmitter } from './event-emitter';
+import { Layer } from './layer';
 
-export class Game implements IRunnable {
+interface GameEvents {
+  start: undefined;
+  stop: undefined;
+  update: DeltaTime;
+}
+
+export class Game extends EventEmitter<GameEvents> implements IRunnable {
   private isRunning = false;
   private lastTimestamp = 0;
   private layers: Layer<any>[] = [];
 
   public start(): void {
+    this.emit('start');
     this.isRunning = true;
-
-    const worldLayer = new WorldLayer('game');
-    const guiLayer = new GuiLayer('game');
-    this.layers.push(worldLayer, guiLayer);
     this.attachLayers();
-
     requestAnimationFrame(this.gameLoop.bind(this));
   }
 
   public stop(): void {
+    this.emit('stop');
     this.isRunning = false;
     this.detachLayers();
   }
@@ -29,9 +33,14 @@ export class Game implements IRunnable {
 
     const deltaTime = this.updateTimer(timestamp);
 
+    this.emit('update', deltaTime);
     this.updateLayers(deltaTime);
 
     requestAnimationFrame(this.gameLoop.bind(this));
+  }
+
+  public addLayers(layers: Layer<any>[]): void {
+    this.layers.push(...layers);
   }
 
   private attachLayers() {

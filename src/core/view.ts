@@ -56,16 +56,16 @@ export class View<Ctx extends Context> {
     container.appendChild(this.canvas);
   }
 
-  public hide() {
+  public hide(): void {
     this.canvas.remove();
   }
 
-  public move(x: number, y: number) {
+  public move(x: number, y: number): void {
     this.canvas.style.top = `${String(y)}px`;
     this.canvas.style.left = `${String(x)}px`;
   }
 
-  public resize(width: number, height: number) {
+  public resize(width: number, height: number): void {
     this.canvas.width = width;
     this.canvas.height = height;
     const context = this.getContext();
