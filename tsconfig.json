@@ -8,6 +8,8 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
 
+    "isolatedDeclarations": true,
+    "isolatedModules": true,
     "stripInternal": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
@@ -21,6 +23,8 @@
     "module": "esnext",
     "target": "es2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    "types": ["vite/client"],
 
     "baseUrl": ".",
     "paths": {
