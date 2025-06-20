@@ -15,7 +15,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "lint:all": "npm-run-all ts-lint eslint",
+    "prebuild": "npm run lint:all",
+    "lint:all": "npm-run-all lint:code lint:types",
     "lint:code": "eslint ./src --max-warnings 0",
     "lint:types": "tsc --noEmit",
     "format": "prettier ./src"

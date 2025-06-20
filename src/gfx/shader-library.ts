@@ -10,12 +10,11 @@ export class ShaderLibrary {
   }
 
   private static Load(): void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const shaders: Record<string, string> = import.meta.glob<string>('/public/shaders/**/*.glsl', {
       query: '?raw',
       import: 'default',
       eager: true,
-    }) as Record<string, string>;
+    });
 
     for (const shaderPath in shaders) {
       const source = shaders[shaderPath];

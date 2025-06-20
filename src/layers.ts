@@ -1,5 +1,4 @@
 import { Layer } from '@/core/layer';
-import { assert } from '@/debug/asserts';
 import { IndexBuffer } from '@/gfx/index-buffer';
 import { Shader } from '@/gfx/shader';
 import { VertexArray } from '@/gfx/vertex-array';
